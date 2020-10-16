@@ -75,6 +75,7 @@
 .iconPlus {
   color: white;
   font-size: 11px;
+  pointer-events: none;
 }
 .minusBtn {
   padding: 8px;
@@ -88,6 +89,7 @@
 .iconMinus {
   color: white;
   font-size: 11px;
+  pointer-events: none;
 }
 .counternum {
   background-color: #0044ff;
@@ -101,5 +103,4 @@
   border-radius: 5px;
   outline: none;
   margin-right: 28px;
- 
 }

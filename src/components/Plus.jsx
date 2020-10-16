@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
-class Plus extends React.Component {
+class Plus extends Component {
   render() {
-    const { plusbtn } = this.props;
+    const { plusbtn, name } = this.props;
     return (
-      <button className={`plusBtn`} onClick={plusbtn}>
+      <button className={`plusBtn`} onClick={plusbtn} name={name}>
         <FontAwesomeIcon className="iconPlus" icon={faPlusCircle} />
       </button>
     );

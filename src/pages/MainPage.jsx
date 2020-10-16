@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Content from "../components/Content";
+import Content from "./Content";
 import Header from "../components/Header";
 import RestBtn from "../components/RestBtn";
 
@@ -10,58 +10,29 @@ class MainPage extends Component {
     counter2: 0,
     counter3: 0,
     counter4: 0,
+    disable1: false,
   };
-
-  plusbtn1 = () => {
-    this.setState((prevState) => {
-      if (prevState.counter1 === 0) {
-        return {
-          counter1: prevState.counter1 + 1,
-          counter: prevState.counter + 1,
-        };
-      }
-      return { counter1: prevState.counter1 + 1 };
-    });
+  concatnaiton = {
+    1: "counter1",
+    2: "counter2",
+    3: "counter3",
+    4: "counter4",
   };
-  plusbtn2 = () => {
+  plusbtn = (e) => {
+    const { name } = e.target;
     this.setState((prevState) => {
-      if (prevState.counter2 === 0) {
+      if (prevState[this.concatnaiton[name]] === 0) {
         return {
-          counter2: prevState.counter2 + 1,
+          [this.concatnaiton[name]]: prevState[this.concatnaiton[name]] + 1,
           counter: prevState.counter + 1,
         };
       }
       return {
-        counter2: prevState.counter2 + 1,
+        [this.concatnaiton[name]]: prevState[this.concatnaiton[name]] + 1,
       };
     });
   };
 
-  plusbtn3 = () => {
-    this.setState((prevState) => {
-      if (prevState.counter3 === 0) {
-        return {
-          counter3: prevState.counter3 + 1,
-          counter: prevState.counter + 1,
-        };
-      }
-
-      return { counter3: prevState.counter3 + 1 };
-    });
-  };
-
-  plusbtn4 = () => {
-    this.setState((prevState) => {
-      if (prevState.counter4 === 0) {
-        return {
-          counter4: prevState.counter4 + 1,
-          counter: prevState.counter + 1,
-        };
-      }
-
-      return { counter4: prevState.counter4 + 1 };
-    });
-  };
   restbtn = () => {
     this.setState(() => {
       return {
@@ -72,39 +43,16 @@ class MainPage extends Component {
         counter4: 0,
       };
     });
+    this.setState({ disable1: true });
   };
 
-  minusbtn1 = () => {
+  minusbtn = (e) => {
+    const { name } = e.target;
     this.setState((prevState) => {
-      const removeState = { counter1: prevState.counter1 - 1 };
-      if (prevState.counter1 === 1) {
-        removeState.counter = prevState.counter - 1;
-      }
-      return removeState;
-    });
-  };
-  minusbtn2 = () => {
-    this.setState((prevState) => {
-      const removeState = { counter2: prevState.counter2 - 1 };
-      if (prevState.counter2 === 1) {
-        removeState.counter = prevState.counter - 1;
-      }
-      return removeState;
-    });
-  };
-  minusbtn3 = () => {
-    this.setState((prevState) => {
-      const removeState = { counter3: prevState.counter3 - 1 };
-      if (prevState.counter3 === 1) {
-        removeState.counter = prevState.counter - 1;
-      }
-      return removeState;
-    });
-  };
-  minusbtn4 = () => {
-    this.setState((prevState) => {
-      const removeState = { counter4: prevState.counter4 - 1 };
-      if (prevState.counter4 === 1) {
+      const removeState = {
+        [this.concatnaiton[name]]: prevState[this.concatnaiton[name]] - 1,
+      };
+      if (prevState[this.concatnaiton[name]] === 1) {
         removeState.counter = prevState.counter - 1;
       }
       return removeState;
@@ -118,23 +66,27 @@ class MainPage extends Component {
         <RestBtn restbtn={this.restbtn} />
         <Content
           counter={this.state.counter1}
-          plusbtn={this.plusbtn1}
-          minusbtn={this.minusbtn1}
+          plusbtn={this.plusbtn}
+          minusbtn={this.minusbtn}
+          name="1"
         />
         <Content
           counter={this.state.counter2}
-          plusbtn={this.plusbtn2}
-          minusbtn={this.minusbtn2}
+          plusbtn={this.plusbtn}
+          minusbtn={this.minusbtn}
+          name="2"
         />
         <Content
           counter={this.state.counter3}
-          plusbtn={this.plusbtn3}
-          minusbtn={this.minusbtn3}
+          plusbtn={this.plusbtn}
+          minusbtn={this.minusbtn}
+          name="3"
         />
         <Content
           counter={this.state.counter4}
-          plusbtn={this.plusbtn4}
-          minusbtn={this.minusbtn4}
+          plusbtn={this.plusbtn}
+          minusbtn={this.minusbtn}
+          name="4"
         />
       </div>
     );
