@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlusCircle, faMinusCircle } from "@fortawesome/free-solid-svg-icons";
-
+import { faMinusCircle } from "@fortawesome/free-solid-svg-icons";
+import Plus from "./Plus";
 class Content extends Component {
   render() {
-    const { counter } = this.props;
+    const { counter, plusbtn, minusbtn } = this.props;
     return (
       <section className="container">
         <div className="content">
@@ -13,17 +12,13 @@ class Content extends Component {
             className={`counter ${counter ? "counternum" : ""}`}
             id="counter1"
           >
-            <strong>{`${
-              this.props.counter > 0 ? this.props.counter : "Zero"
-            }`}</strong>
+            <strong>{`${counter > 0 ? counter : "Zero"}`}</strong>
           </span>
-          <button className={`plusBtn`} onClick={this.props.PlusBtn}>
-            <FontAwesomeIcon className="iconPlus" icon={faPlusCircle} />
-          </button>
+          <Plus plusbtn={plusbtn} />
           <button
-            className={`minusBtn${this.counter1 === 0 ? "display" : ""}`}
-            onClick={() => this.minusbtn()}
-            disabled={this.counter1 === 0}
+            className={`minusBtn${counter === 0 ? "" : ""}`}
+            onClick={minusbtn}
+            disabled={counter === 0}
           >
             <FontAwesomeIcon className="iconMinus" icon={faMinusCircle} />
           </button>

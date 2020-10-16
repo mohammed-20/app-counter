@@ -6,7 +6,7 @@ import "../App.css";
 class RestBtn extends Component {
   render() {
     return (
-      <div className="restBtn" onClick={(e) => this.resetbtn(e)}>
+      <div className="restBtn" onClick={this.props.restbtn}>
         <FontAwesomeIcon className="iconSyn" icon={faSyncAlt} />
       </div>
     );
